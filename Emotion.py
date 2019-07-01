@@ -30,6 +30,6 @@ data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', max
 data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
 y_prob = best_model.predict(data_test)
 
-print(" Neutral: ",y_prob[0][0], " Happy: ",y_prob[0][1], " Sad: ",y_prob[0][2], " Hate: ",y_prob[0][0], " Anger: ",y_prob[0][0])
+#print(" Neutral: ",y_prob[0][0], " Happy: ",y_prob[0][1], " Sad: ",y_prob[0][2], " Hate: ",y_prob[0][0], " Anger: ",y_prob[0][0])
 
 #y_prob[0][0] + y_prob[0][1] + y_prob[0][2] + y_prob[0][3] + y_prob[0][4]
