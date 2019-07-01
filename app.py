@@ -12,7 +12,7 @@ import re
 from flask import Flask, jsonify, render_template, request
 from keras.models import load_model
 # Run this cell to mount your Google Drive.
-from google.colab import drive
+#from google.colab import drive
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import pickle
