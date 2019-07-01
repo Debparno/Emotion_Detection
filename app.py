@@ -43,7 +43,7 @@ def calculate():
         result = y_prob[0][0]
     else:
         result = y_prob[0][0]
-    return y_prob[0][0]
+    return jsonify(result = eval(str(y_prob[0][0]) + "+" + "0.0")
 
 
 @app.route('/')
