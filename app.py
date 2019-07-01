@@ -16,17 +16,7 @@ from keras.models import load_model
 #from google.colab import drive
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-#import pickle
-#with open('tokenizer.pickle', 'rb') as handle:
- #   tokenizer = pickle.load(handle)
 
-
-
-#text = ["Hello Girl",
-        "","","",""
-       ]
-
-#sequences_test = tokenizer.texts_to_sequences(text)
 
 
 
