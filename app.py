@@ -15,20 +15,20 @@ from keras.models import load_model
 #from google.colab import drive
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-import pickle
-with open('tokenizer.pickle', 'rb') as handle:
-    tokenizer = pickle.load(handle)
+#import pickle
+#with open('tokenizer.pickle', 'rb') as handle:
+ #   tokenizer = pickle.load(handle)
 
 MAX_SEQUENCE_LENGTH = 30
 
 best_model =  load_model('checkpoint-1.111.h5')
 
-text = ["Hello Girl",
+#text = ["Hello Girl",
         "","","",""
        ]
 
-sequences_test = tokenizer.texts_to_sequences(text)
-data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
+#sequences_test = tokenizer.texts_to_sequences(text)
+data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
 data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
 y_prob = best_model.predict(data_test)
 
