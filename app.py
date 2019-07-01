@@ -10,6 +10,7 @@
 """
 import re
 from flask import Flask, jsonify, render_template, request
+"""
 from keras.models import load_model
 # Run this cell to mount your Google Drive.
 #from google.colab import drive
@@ -31,6 +32,7 @@ best_model =  load_model('checkpoint-1.111.h5')
 data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
 data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
 y_prob = best_model.predict(data_test)
+"""
 
 app = Flask(__name__)
 
