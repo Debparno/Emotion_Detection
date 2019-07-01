@@ -23,20 +23,13 @@ from keras.preprocessing.text import Tokenizer
 
 from keras.preprocessing.sequence import pad_sequences
 
-import pickle
+#import pickle
 
-with open('tokenizer.pickle', 'rb') as handle:
-    tokenizer = pickle.load(handle)
 
-text = [input(),
-        "","","",""
-       ]
-
-sequences_test = tokenizer.texts_to_sequences(text)
-data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
+data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
 data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
 y_prob = best_model.predict(data_test)
 
 print(" Neutral: ",y_prob[0][0], " Happy: ",y_prob[0][1], " Sad: ",y_prob[0][2], " Hate: ",y_prob[0][0], " Anger: ",y_prob[0][0])
 
-y_prob[0][0] + y_prob[0][1] + y_prob[0][2] + y_prob[0][3] + y_prob[0][4]
+#y_prob[0][0] + y_prob[0][1] + y_prob[0][2] + y_prob[0][3] + y_prob[0][4]
