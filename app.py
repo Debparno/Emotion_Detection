@@ -40,10 +40,10 @@ def calculate():
     if m is None or n is None or operator not in '+-*/':
         return jsonify(result='I Catch a BUG!')
     if operator == '/':
-        result = eval(a + operator + str(float(b)))
+        result = y_prob[0][0]
     else:
-        result = eval(a + operator + b)
-    return jsonify(result=result)
+        result = y_prob[0][0]
+    return y_prob[0][0]
 
 
 @app.route('/')
