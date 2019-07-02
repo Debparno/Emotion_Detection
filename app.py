@@ -31,7 +31,10 @@ def calculate():
     data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     y_prob = best_model.predict(data_test)
-    return "Hello World"
+    
+    text = request.form['u']
+    processed_text = text.upper()
+    return processed_text
     """
     a = request.args.get('number1', '0')
     operator = request.args.get('operator', '+')
