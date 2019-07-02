@@ -60,8 +60,8 @@ def index():
     best_model =  load_model('BalanceNet.h5')
     data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(30-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(30))
-    #y_prob = best_model.predict(data_test)
-    return str(data['id'][0])
+    y_prob = best_model.predict(data_test)
+    return str(y_prob[0][0])
 
 
 if __name__ == '__main__':
