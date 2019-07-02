@@ -53,14 +53,17 @@ def calculate():
 
 x = 3
 y = 4
-best_model =  load_model('BalanceNet.h5') 
+#best_model =  load_model('BalanceNet.h5') 
 @app.route('/')
 def index():
     #data = pd.read_csv('train.csv')
-    #best_model =  load_model('BalanceNet.h5')
-    data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(30-5))
-    data_test = pad_sequences(data_int_t, padding='post', maxlen=(30))
-    y_prob = best_model.predict(data_test)
+    best_model =  load_model('BalanceNet.h5')
+    while(True):
+        x =int(input())
+        data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(30-5))
+        data_test = pad_sequences(data_int_t, padding='post', maxlen=(30))
+        y_prob = best_model.predict(data_test)
+        print (y_prob[0][0])
     return str(y_prob[0][0])
 
 
