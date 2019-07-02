@@ -52,8 +52,9 @@ def calculate():
 
 @app.route('/')
 def index():
-    
-    return render_template('index.html')
+    x = 3
+    y = 4
+    return str(x + y)
 
 
 if __name__ == '__main__':
