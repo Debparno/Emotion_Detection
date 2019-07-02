@@ -49,11 +49,11 @@ def calculate():
     return jsonify(result = eval(str(y_prob[0][0]) + "+" + "0.0")) 
     """
 
-
+x = 3
+y = 4
+    
 @app.route('/')
 def index():
-    x = 3
-    y = 4
     return str(x + y)
 
 
