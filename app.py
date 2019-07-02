@@ -22,7 +22,7 @@ from keras.preprocessing.sequence import pad_sequences
 
 app = Flask(__name__)
 
-"""
+
 @app.route('/_calculate')
 def calculate():
     MAX_SEQUENCE_LENGTH = 30
@@ -32,11 +32,9 @@ def calculate():
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     y_prob = best_model.predict(data_test)
     
-    text = request.form['u']
-    processed_text = text.upper()
-    return processed_text
+    return "hello world"
 
-    
+    """
     a = request.args.get('number1', '0')
     operator = request.args.get('operator', '+')
     b = request.args.get('number2', '0')
@@ -55,14 +53,7 @@ def calculate():
 @app.route('/')
 def index():
     
-    MAX_SEQUENCE_LENGTH = 30
-    
-    #best_model =  load_model('checkpoint-1.111.h5')
-    data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
-    data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
-    #y_prob = best_model.predict(data_test)
-    """
-    return "hello"
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
