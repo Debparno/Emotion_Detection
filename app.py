@@ -31,7 +31,8 @@ def calculate():
     data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     y_prob = best_model.predict(data_test)
-    
+    return "Hello World"
+    """
     a = request.args.get('number1', '0')
     operator = request.args.get('operator', '+')
     b = request.args.get('number2', '0')
@@ -43,7 +44,8 @@ def calculate():
         result = y_prob[0][0]
     else:
         result = y_prob[0][0]
-    return jsonify(result = eval(str(y_prob[0][0]) + "+" + "0.0"))
+    return jsonify(result = eval(str(y_prob[0][0]) + "+" + "0.0")) 
+    """
 
 
 @app.route('/')
