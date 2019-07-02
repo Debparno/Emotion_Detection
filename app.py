@@ -27,7 +27,7 @@ app = Flask(__name__)
 def calculate():
     MAX_SEQUENCE_LENGTH = 30
     
-    best_model =  load_model('checkpoint-1.111.h5')
+    best_model =  load_model('example.h5')
     data2 = pd.read_csv('train.csv')
     
     data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
