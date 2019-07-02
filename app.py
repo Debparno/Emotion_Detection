@@ -54,6 +54,8 @@ y = 4
     
 @app.route('/')
 def index():
+    data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(30-5))
+    data_test = pad_sequences(data_int_t, padding='post', maxlen=(30))
     return str(x + y)
 
 
