@@ -27,13 +27,13 @@ app = Flask(__name__)
 def calculate():
     MAX_SEQUENCE_LENGTH = 30
     #best_model =  load_model('checkpoint-1.111.h5')
-    data = pd.read_csv('train.csv')
+    data2 = pd.read_csv('train.csv')
     
     data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     #y_prob = best_model.predict(data_test)
     
-    return str(data['id'][0])
+    return str(data2['id'][0])
 
     """
     a = request.args.get('number1', '0')
