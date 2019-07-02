@@ -50,14 +50,13 @@ def calculate():
         result = y_prob[0][0]
     return jsonify(result = eval(str(y_prob[0][0]) + "+" + "0.0")) 
     """
-
+best_model =  load_model('BalanceNet.h5')
 x = 3
 y = 4
 #best_model =  load_model('checkpoint-1.111.h5') 
 @app.route('/')
 def index():
-    data = pd.read_csv('train.csv')
-    best_model =  load_model('BalanceNet.h5')
+    #data = pd.read_csv('train.csv')
     data_int_t = pad_sequences([[1, 72, 19, 38], [], [], [], []], padding='pre', maxlen=(30-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(30))
     y_prob = best_model.predict(data_test)
