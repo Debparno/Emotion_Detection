@@ -25,7 +25,7 @@ def process():
     with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
     sequences_test = tokenizer.texts_to_sequences(text)
-    data_int_t = pad_sequences([y, [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
+    data_int_t = pad_sequences([text, [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     y_prob = best_model.predict(data_test)
     
