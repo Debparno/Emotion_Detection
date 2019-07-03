@@ -31,9 +31,9 @@ def my_form_post():
 def process():
     firstName = request.form['firstName']
     lastName = request.form['lastName']
-    output = firstName + lastName
+    output = int(firstName) + int(lastName)
     if (firstName and lastName):
-        return jsonify({'output':'Full Name: ' + output})
+        return jsonify({'output':'Full Name: ' + str(output)})
     return jsonify({'error' : 'Missing data!'})
 
 @app.route('/')
