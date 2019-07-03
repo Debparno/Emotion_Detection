@@ -26,7 +26,7 @@ def process():
     
     #output = firstName + lastName
     if (firstName and lastName):
-        return jsonify({'output':'Full Name: ' + str(y_prob[0][0])
+        return jsonify({'output':'Full Name: ' + str(y_prob[0][0])})
     return jsonify({'error' : 'Missing data!'})
 
     
