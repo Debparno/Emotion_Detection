@@ -10,6 +10,7 @@ import pandas as pd
 
 app = Flask(__name__)
 
+"""
 @app.route('/', methods = ['POST'])
 def my_form_post():
     MAX_SEQUENCE_LENGTH = 30
@@ -24,13 +25,20 @@ def my_form_post():
     y_prob = best_model.predict(data_test)
     #processed_text = text.upper()
     return jsonify({'request' : str(y_prob[0][0])})
+ """
+
+@app.route('/process',methods= ['POST'])
+ def process():
+  firstName = request.form['firstName']
+  lastName = request.form['lastName']
+  output = firstName + lastName
+  if firstName and lastName:
+   return jsonify({'output':'Full Name: ' + output})
+  return jsonify({'error' : 'Missing data!'})
 
 @app.route('/')
-def my_form():
-    return render_template('index.html')
-
-if __name__ == '__main__':
-    app.run()
+def index():
+return render_template('index.html')
 
 
 """
