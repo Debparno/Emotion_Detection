@@ -28,17 +28,17 @@ def my_form_post():
  """
 
 @app.route('/process',methods= ['POST'])
- def process():
-  firstName = request.form['firstName']
-  lastName = request.form['lastName']
-  output = firstName + lastName
-  if firstName and lastName:
-   return jsonify({'output':'Full Name: ' + output})
-  return jsonify({'error' : 'Missing data!'})
+def process():
+    firstName = request.form['firstName']
+    lastName = request.form['lastName']
+    output = firstName + lastName
+    if (firstName and lastName):
+        return jsonify({'output':'Full Name: ' + output})
+    return jsonify({'error' : 'Missing data!'})
 
 @app.route('/')
 def index():
-return render_template('index.html')
+    return render_template('index.html')
 
 
 """
