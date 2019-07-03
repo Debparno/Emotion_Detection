@@ -10,16 +10,16 @@ import pandas as pd
 import pickle
 import tensorflow as tf
 
-"""
-@app.route('/init')
 app = Flask(__name__)
+
+@app.route('/init')
 def init():
     global best_model
     # load the pre-trained Keras model
     best_model = load_model('models/gotCharactersDeathPredictions.h5')
     #graph = tf.get_default_graph()
     
-"""
+
 
 @app.route('/process',methods= ['POST'])
 def process():
