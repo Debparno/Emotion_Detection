@@ -11,7 +11,9 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
   $(document).ready(function() {
-    //$.getJSON($SCRIPT_ROOT + '/init');
+    $.ajax({
+             url : '/init'
+            });
      $('form').on('submit', function(event) {
        $.ajax({
           data : {
