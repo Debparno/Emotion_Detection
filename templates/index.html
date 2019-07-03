@@ -14,11 +14,10 @@
      $('form').on('submit', function(event) {
        $.ajax({
           data : {
-             firstName : $('#firstName').val(),
              lastName: $('#lastName').val(),
                  },
              type : 'POST',
-             url : '/'
+             url : '/process'
             })
         .done(function(data) {
           $('#output').text(data.output).show();
