@@ -8,12 +8,14 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import pandas as pd
 import pickle
+import tensorflow as tf
 
 app = Flask(__name__)
 def init():
-    global best_model
+    global best_model, graph
     # load the pre-trained Keras model
     best_model = load_model('models/gotCharactersDeathPredictions.h5')
+    graph = tf.get_default_graph()
 
 @app.route('/process',methods= ['POST'])
 def process():
@@ -28,7 +30,9 @@ def process():
     sequences_test = tokenizer.texts_to_sequences(text)
     data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
-    y_prob = best_model.predict(data_test)
+    with graph.as_default():
+        y_prob = best_model.predict(data_test)
+    
     
     #output = firstName + lastName
     if (firstName):
