@@ -11,7 +11,7 @@ import pickle
 
 app = Flask(__name__)
 def init():
-    global model
+    global best_model
     # load the pre-trained Keras model
     best_model = load_model('models/gotCharactersDeathPredictions.h5')
 
