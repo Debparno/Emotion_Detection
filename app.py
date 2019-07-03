@@ -17,15 +17,12 @@ def process():
     MAX_SEQUENCE_LENGTH = 30
     firstName = request.form['firstName']
     #lastName = request.form['lastName']
-    best_model =  load_model('BalanceNet1.h5')
-    #data2 = pd.read_csv('train.csv')
-    x = request.form['firstName']
-    text = ['' for _ in range(5)]
-    text[0] = x
     with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
+    text = ["" for _ in range(5)]
+    text[0] = str(firstName)
     sequences_test = tokenizer.texts_to_sequences(text)
-    data_int_t = pad_sequences([text, [], [], [], []], padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
+    data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     y_prob = best_model.predict(data_test)
     
