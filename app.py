@@ -10,6 +10,7 @@ import pandas as pd
 import pickle
 import tensorflow as tf
 
+@app.route('/init')
 app = Flask(__name__)
 def init():
     global best_model, graph
