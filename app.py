@@ -10,14 +10,17 @@ import pandas as pd
 import pickle
 
 app = Flask(__name__)
-
+def init():
+    global model
+    # load the pre-trained Keras model
+    best_model = load_model('models/gotCharactersDeathPredictions.h5')
 
 @app.route('/process',methods= ['POST'])
 def process():
     MAX_SEQUENCE_LENGTH = 30
     firstName = request.form['firstName']
     #lastName = request.form['lastName']
-    best_model =  load_model('BalanceNet1.h5')
+    #best_model =  load_model('BalanceNet1.h5')
     with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
     text = ["" for _ in range(5)]
