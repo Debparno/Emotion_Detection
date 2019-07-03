@@ -29,7 +29,7 @@ def process():
     
     #output = firstName + lastName
     if (firstName):
-        return jsonify({'output':'Neutral: ' + str(y_prob[0][0]) + '  Happiness: ' + str(y_prob[0][1]) +'  Sadness: ' + str(y_prob[0][0]) + '  Hatred: ' + str(y_prob[0][0]) + '  Anger: ' + str(y_prob[0][0])})
+        return jsonify({'output':'Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][0]) + ' ......Hatred: ' + str(y_prob[0][0]) + ' ......Anger: ' + str(y_prob[0][0])})
     return jsonify({'error' : 'Missing data!'})
 
     
