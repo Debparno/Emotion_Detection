@@ -10,9 +10,8 @@ import pandas as pd
 
 app = Flask(__name__)
 
-"""
 @app.route('/', methods = ['POST'])
-def my_form_post():
+def index():
     MAX_SEQUENCE_LENGTH = 30
     
     best_model =  load_model('BalanceNet.h5')
@@ -25,12 +24,12 @@ def my_form_post():
     y_prob = best_model.predict(data_test)
     #processed_text = text.upper()
     return jsonify({'request' : str(y_prob[0][0])})
- """
+
 
 @app.route('/process',methods= ['POST'])
 def process():
     MAX_SEQUENCE_LENGTH = 30
-    best_model =  load_model('BalanceNet.h5')
+    #best_model =  load_model('BalanceNet.h5')
     """
     firstName = request.form['firstName']
     #lastName = request.form['lastName']
@@ -45,7 +44,7 @@ def process():
     if (firstName):
         return jsonify({'output':'Full Name: ' + 'debu'})
     return jsonify({'error' : 'Missing data!'})
-
+"""
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -53,7 +52,7 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
+"""
 """
 import re
 from flask import Flask, jsonify, render_template, request
