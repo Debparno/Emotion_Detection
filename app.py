@@ -15,7 +15,7 @@ app = Flask(__name__)
 def process():
     MAX_SEQUENCE_LENGTH = 30
     firstName = request.form['firstName']
-    lastName = request.form['lastName']
+    #lastName = request.form['lastName']
     best_model =  load_model('BalanceNet1.h5')
     #data2 = pd.read_csv('train.csv')
     text = request.form['firstName']
@@ -26,8 +26,8 @@ def process():
     y_prob = best_model.predict(data_test)
     
     #output = firstName + lastName
-    if (firstName and lastName):
-        return jsonify({'output':'Full Name: ' + str(y_prob[0][0])})
+    if (firstName):
+        return jsonify({'output':'Neutral: ' + str(y_prob[0][0]) + 'Happiness: ' + str(y_prob[0][1]) +'Sadness: ' + str(y_prob[0][0]) + 'Hatred: ' + str(y_prob[0][0]) + 'Anger: ' + str(y_prob[0][0])})
     return jsonify({'error' : 'Missing data!'})
 
     
