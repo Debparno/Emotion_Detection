@@ -26,7 +26,7 @@ def my_form_post():
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     y_prob = best_model.predict(data_test)
     #processed_text = text.upper()
-    return str(y_prob[0][0])
+    return jsonify({'request' : str(y_prob[0][0])})
 
 @app.route('/')
 def my_form():
