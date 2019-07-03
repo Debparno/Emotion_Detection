@@ -7,74 +7,43 @@
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+     $('form').on('submit', function(event) {
+       $.ajax({
+          data : {
+             firstName : $('#firstName').val(),
+             lastName: $('#lastName').val(),
+                 },
+             type : 'POST',
+             url : '/process'
+            })
+        .done(function(data) {
+          $('#output').text(data.output).show();
+      });
+      event.preventDefault();
+      });
+   </script>
+
 </head>
 
 <body>
-  
-  <form method="POST">
-        <p>Login</p>
-        <input name="u">
-        <input type="submit">
-    </form>
-  <!--
-  <div class="box">
-    <div class="screen">
-      <div class="main-screen" id="output">0</div>
-      <div class="sub-screen" id="output2"></div>
-    </div>
 
-    <input type="hidden" id="num1">
-    <input type="hidden" id="operator">
-    <input type="hidden" id="num2">
-    <input type="hidden" id="temp">
+  <form class="form-inline">
+<div class="form-group">
+<label class="sr-only" for="firstName">First Name</label>
+<input type="text" class="form-control" id="firstName" placeholder="First Name">
+</div>
 
-    
-    <div class="container-fluid">
-      <div class="buttons">
-        <button class="btn-clear btn btn-danger" id="clearButton">C</button>
-        <button class="btn btn-warning" onclick="window.open('https://zhuanlan.zhihu.com/flask')">瓶</button>
-        <button class="btn-operate btn btn-default" value="/">/</button>
-        <button class="btn-operate btn btn-default" value="*">x</button>
-      </div>
 
-      <div class="buttons">
-        <button class="nums btn btn-default" value="7">7</button>
-        <button class="nums btn btn-default" value="8">8</button>
-        <button class="nums btn btn-default" value="9">9</button>
-        <button class="btn-operate btn btn-default" value="-">-</button>
-      </div>
+<button type="submit" class="btn btn-default">Submit</button>
+</form>
+<br>
+<div id="output"></div>
+<br>
 
-      <div class="buttons">
-        <button class="nums btn btn-default" value="4">4</button>
-        <button class="nums btn btn-default" value="5">5</button>
-        <button class="nums btn btn-default" value="6">6</button>
-        <button class="btn-operate btn btn-default" value="+">+</button>
-      </div>
-
-      <div class="buttons">
-        <button class="nums btn btn-default" value="1">1</button>
-        <button class="nums btn btn-default" value="2">2</button>
-        <button class="nums btn btn-default" value="3">3</button>
-        <button class="btn-equal btn btn-info" id="resultButton">=</button>
-      </div>
-
-      <div class="buttons">
-        <button class="nums btn-zero btn btn-default" value="0">0</button>
-        <button class="nums btn btn-default" value=".">.</button>
-      </div>
-    </div>
-
-    <footer class="text-center">
-      Made by <a href="http://greyli.com" target="_blank">Grey Li</a>.
-    </footer>
-  </div>
-
-  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  <script type="text/javascript">
-    var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-  </script> -->
 
 </body>
 </html>
-
