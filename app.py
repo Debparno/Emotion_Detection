@@ -9,12 +9,15 @@ from keras.preprocessing.sequence import pad_sequences
 import pandas as pd
 
 app = Flask(__name__)
+@app.route('/')
+def initialization():
+    best_model =  load_model('BalanceNet.h5')
 
 @app.route('/', methods = ['POST'])
 def my_form_post():
     MAX_SEQUENCE_LENGTH = 30
     
-    best_model =  load_model('BalanceNet.h5')
+    #best_model =  load_model('BalanceNet.h5')
     #data2 = pd.read_csv('train.csv')
     text = request.form['u']
     x = text.split(' ')
