@@ -12,13 +12,14 @@ import tensorflow as tf
 
 app = Flask(__name__)
 
+"""
 @app.route('/init')
 def init():
     global best_model
     # load the pre-trained Keras model
     best_model = load_model('BalanceNet1.h5')
     #graph = tf.get_default_graph()
-    
+"""  
 
 
 @app.route('/process',methods= ['POST'])
@@ -26,7 +27,7 @@ def process():
     MAX_SEQUENCE_LENGTH = 30
     firstName = request.form['firstName']
     #lastName = request.form['lastName']
-    #best_model =  load_model('BalanceNet1.h5')
+    best_model =  load_model('BalanceNet1.h5')
     with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
     text = ["" for _ in range(5)]
