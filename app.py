@@ -35,21 +35,21 @@ def process():
     #best_model =  load_model('BalanceNet1.h5')
     
     text = ["" for _ in range(5)]
-    seq = str(firstName)
-    lent = len(seq)
-    for i in range(0,lent):
-        if(i + 10 > lent):
-            text[0] = seq[i:lent]
-        else:
-            text[0] = seq[i:i+10]
-        sequences_test = tokenizer.texts_to_sequences(text)
-        data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
-        data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
-        #with graph.as_default():
-        global graph
-        with graph.as_default():
-            y_prob = best_model.predict(data_test)
-        result = result + '    Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][2]) + ' ......Hatred: ' + str(y_prob[0][3]) + ' ......Anger: ' + str(y_prob[0][4]) + '..........................................'
+    text = str(firstName)
+    
+    
+    sequences_test = tokenizer.texts_to_sequences(text)
+    data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
+    data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
+    #with graph.as_default():
+    global graph
+    with graph.as_default():
+    y_prob = best_model.predict(data_test)
+    y_prob = list(y_prob[0])
+    emot = ["Neutral", "Happy", "Sad", "Hate","Anger"]
+    maxi = y_prob.index(max(y_prob))
+    result = result + '    Neutral: ' + str(y_prob[0]) + ' ......Happiness: ' + str(y_prob[1]) +' ......Sadness: ' + str(y_prob[2]) + ' ......Hatred: ' + str(y_prob[3]) + ' ......Anger: ' + str(y_prob[4]) + '..................... Prominent Emotion: ' + emot[maxi]
+    
     #K.clear_session()
     
     
