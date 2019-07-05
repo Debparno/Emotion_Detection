@@ -44,7 +44,7 @@ def process():
     #with graph.as_default():
     global graph
     with graph.as_default():
-    y_prob = best_model.predict(data_test)
+        y_prob = best_model.predict(data_test)
     y_prob = list(y_prob[0])
     emot = ["Neutral", "Happy", "Sad", "Hate","Anger"]
     maxi = y_prob.index(max(y_prob))
