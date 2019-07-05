@@ -45,9 +45,9 @@ def process():
     global graph
     with graph.as_default():
         y_prob = best_model.predict(data_test)
-    y_prob = list(y_prob[0])
+    lis = list(y_prob[0])
     emot = ["Neutral", "Happy", "Sad", "Hate","Anger"]
-    maxi = y_prob.index(max(y_prob))
+    maxi = lis.index(max(lis))
     result = result + '    Neutral: ' + str(y_prob[0]) + ' ......Happiness: ' + str(y_prob[1]) +' ......Sadness: ' + str(y_prob[2]) + ' ......Hatred: ' + str(y_prob[3]) + ' ......Anger: ' + str(y_prob[4]) + '..................... Prominent Emotion: ' + emot[maxi]
     
     #K.clear_session()
