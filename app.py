@@ -27,6 +27,7 @@ def init():
 
 @app.route('/process',methods= ['POST'])
 def process():
+    result = ""
     MAX_SEQUENCE_LENGTH = 30
     firstName = request.form['firstName']
     #lastName = request.form['lastName']
@@ -34,20 +35,27 @@ def process():
     with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
     text = ["" for _ in range(5)]
-    text[0] = str(firstName)
-    sequences_test = tokenizer.texts_to_sequences(text)
-    data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
-    data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
-    #with graph.as_default():
-    global graph
-    with graph.as_default():
-        y_prob = best_model.predict(data_test)
+    seq = str(firstName)
+    lent = len(seq)
+    for i in range(0,lent,10):
+        if(i + 10 > lent):
+            text[0] = seq[i,lent]
+        else:
+            text[0] = seq[i,i+10]
+        sequences_test = tokenizer.texts_to_sequences(text)
+        data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
+        data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
+        #with graph.as_default():
+        global graph
+        with graph.as_default():
+            y_prob = best_model.predict(data_test)
+        result.append('Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][0]) + ' ......Hatred: ' + str(y_prob[0][0]) + ' ......Anger: ' + str(y_prob[0][0]) + "|||||||||||||||")
     #K.clear_session()
     
     
     #output = firstName + lastName
     if (firstName):
-        return jsonify({'output':'Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][0]) + ' ......Hatred: ' + str(y_prob[0][0]) + ' ......Anger: ' + str(y_prob[0][0])})
+        return jsonify({'output': result})
     return jsonify({'error' : 'Missing data!'})
 
     
