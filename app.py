@@ -37,23 +37,11 @@ def process():
     text = ["" for _ in range(5)]
     seq = str(firstName)
     lent = len(seq)
-    c = 0
-    for i in range(0,lent,50):        
-        if(i + 50 > lent):
-            for j in range(i,lent,10):
-                if(j + 10 > lent):
-                    text[c] = seq[j:lent]
-                else:
-                    text[c] = seq[j:j+10]
-                c += 1
+    for i in range(0,lent,10):
+        if(i + 10 > lent):
+            text[0] = seq[i:lent]
         else:
-            for j in range(i,i+50,10):
-                if(j + 10 > lent):                    
-                    text[c] = seq[j:lent]
-                else:                    
-                    text[c] = seq[j:j+10]
-                c += 1
-
+            text[0] = seq[i:i+10]
         sequences_test = tokenizer.texts_to_sequences(text)
         data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
         data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
@@ -61,10 +49,8 @@ def process():
         global graph
         with graph.as_default():
             y_prob = best_model.predict(data_test)
-        
-        result = result + 'Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][2]) + ' ......Hatred: ' + str(y_prob[0][3]) + ' ......Anger: ' + str(y_prob[0][4]) + '\n'  + 'Neutral: ' + str(y_prob[1][0]) + ' ......Happiness: ' + str(y_prob[1][1]) +' ......Sadness: ' + str(y_prob[1][2]) + ' ......Hatred: ' + str(y_prob[1][3]) + ' ......Anger: ' + str(y_prob[1][4]) + '\n'  + 'Neutral: ' + str(y_prob[2][0]) + ' ......Happiness: ' + str(y_prob[2][1]) +' ......Sadness: ' + str(y_prob[2][2]) + ' ......Hatred: ' + str(y_prob[2][3]) + ' ......Anger: ' + str(y_prob[2][4]) + '\n'  + 'Neutral: ' + str(y_prob[3][0]) + ' ......Happiness: ' + str(y_prob[3][1]) +' ......Sadness: ' + str(y_prob[3][2]) + ' ......Hatred: ' + str(y_prob[3][3]) + ' ......Anger: ' + str(y_prob[3][4]) + '\n' +    'Neutral: ' + str(y_prob[4][0]) + ' ......Happiness: ' + str(y_prob[4][1]) +' ......Sadness: ' + str(y_prob[4][2]) + ' ......Hatred: ' + str(y_prob[4][3]) + ' ......Anger: ' + str(y_prob[4][4]) + '\n' 
-        c= 0     
-#K.clear_session()
+        result = result + 'Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][2]) + ' ......Hatred: ' + str(y_prob[0][3]) + ' ......Anger: ' + str(y_prob[0][4]) + '\n'
+    #K.clear_session()
     
     
     #output = firstName + lastName
@@ -96,5 +82,4 @@ def index():
     y_prob = best_model.predict(data_test)
     #processed_text = text.upper()
     return jsonify({'request' : str(y_prob[0][0])})
-
 """
