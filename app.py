@@ -11,7 +11,7 @@ import pickle
 import tensorflow as tf
 
 app = Flask(__name__)
-best_model =  load_model('BalanceNet1.h5')
+#best_model =  load_model('BalanceNet1.h5')
 
 """
 @app.route('/init')
@@ -28,7 +28,7 @@ def process():
     MAX_SEQUENCE_LENGTH = 30
     firstName = request.form['firstName']
     #lastName = request.form['lastName']
-    #best_model =  load_model('BalanceNet1.h5')
+    best_model =  load_model('BalanceNet1.h5')
     with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
     text = ["" for _ in range(5)]
