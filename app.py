@@ -9,6 +9,7 @@ from keras.preprocessing.sequence import pad_sequences
 import pandas as pd
 import pickle
 import tensorflow as tf
+from keras import backend as K
 
 app = Flask(__name__)
 #best_model =  load_model('BalanceNet1.h5')
@@ -38,6 +39,7 @@ def process():
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     #with graph.as_default():
     y_prob = best_model.predict(data_test)
+    K.clear_session()
     
     
     #output = firstName + lastName
