@@ -13,6 +13,7 @@ from keras import backend as K
 
 app = Flask(__name__)
 best_model =  load_model('BalanceNet1.h5')
+graph = tf.get_default_graph()
 
 """
 @app.route('/init')
@@ -38,8 +39,10 @@ def process():
     data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     #with graph.as_default():
-    y_prob = best_model.predict(data_test)
-    K.clear_session()
+    global graph
+    with graph.as_default():
+        y_prob = best_model.predict(data_test)
+    #K.clear_session()
     
     
     #output = firstName + lastName
