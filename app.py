@@ -14,7 +14,8 @@ from keras import backend as K
 app = Flask(__name__)
 best_model =  load_model('BalanceNet_T20.h5')
 graph = tf.get_default_graph()
-
+with open('tokenizer.pickle', 'rb') as handle:
+        tokenizer = pickle.load(handle)
 """
 @app.route('/init')
 def init():
@@ -32,8 +33,7 @@ def process():
     firstName = request.form['firstName']
     #lastName = request.form['lastName']
     #best_model =  load_model('BalanceNet1.h5')
-    with open('tokenizer.pickle', 'rb') as handle:
-        tokenizer = pickle.load(handle)
+    
     text = ["" for _ in range(5)]
     seq = str(firstName)
     lent = len(seq)
@@ -49,7 +49,7 @@ def process():
         global graph
         with graph.as_default():
             y_prob = best_model.predict(data_test)
-        result = result + 'Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][0]) + ' ......Hatred: ' + str(y_prob[0][0]) + ' ......Anger: ' + str(y_prob[0][0]) + '   |||||||||||||||   '
+        result = result + 'Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][0]) + ' ......Hatred: ' + str(y_prob[0][0]) + ' ......Anger: ' + str(y_prob[0][0]) + '\n'
     #K.clear_session()
     
     
