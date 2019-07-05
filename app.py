@@ -39,9 +39,9 @@ def process():
     lent = len(seq)
     for i in range(0,lent,10):
         if(i + 10 > lent):
-            text[0] = seq[i,lent]
+            text[0] = seq[i:lent]
         else:
-            text[0] = seq[i,i+10]
+            text[0] = seq[i:i+10]
         sequences_test = tokenizer.texts_to_sequences(text)
         data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
         data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
