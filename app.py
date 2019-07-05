@@ -29,7 +29,7 @@ def init():
 @app.route('/process',methods= ['POST'])
 def process():
     result = ""
-    MAX_SEQUENCE_LENGTH = 25
+    MAX_SEQUENCE_LENGTH = 30
     firstName = request.form['firstName']
     #lastName = request.form['lastName']
     #best_model =  load_model('BalanceNet1.h5')
@@ -49,7 +49,7 @@ def process():
         global graph
         with graph.as_default():
             y_prob = best_model.predict(data_test)
-        result = result + '    Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][2]) + ' ......Hatred: ' + str(y_prob[0][3]) + ' ......Anger: ' + str(y_prob[0][4]) + '.......................................................................................................................'
+        result = result + '    Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][2]) + ' ......Hatred: ' + str(y_prob[0][3]) + ' ......Anger: ' + str(y_prob[0][4]) + '..........................................'
     #K.clear_session()
     
     
