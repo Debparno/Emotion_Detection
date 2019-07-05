@@ -45,13 +45,14 @@ def process():
                     text[c] = seq[j:lent]
                 else:
                     text[c] = seq[j:j+10]
+                c += 1
         else:
             for j in range(i,i+50,10):
                 if(j + 10 > lent):                    
                     text[c] = seq[j:lent]
                 else:                    
                     text[c] = seq[j:j+10]
-        c += 1
+                c += 1
 
         sequences_test = tokenizer.texts_to_sequences(text)
         data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
