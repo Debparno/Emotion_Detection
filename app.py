@@ -62,7 +62,8 @@ def process():
             y_prob = best_model.predict(data_test)
         
         result = result + 'Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][0]) + ' ......Hatred: ' + str(y_prob[0][0]) + ' ......Anger: ' + str(y_prob[0][0]) + '\n'  + 'Neutral: ' + str(y_prob[0][1]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][1]) + ' ......Hatred: ' + str(y_prob[0][1]) + ' ......Anger: ' + str(y_prob[0][1]) + '\n'  + 'Neutral: ' + str(y_prob[0][2]) + ' ......Happiness: ' + str(y_prob[0][2]) +' ......Sadness: ' + str(y_prob[0][2]) + ' ......Hatred: ' + str(y_prob[0][2]) + ' ......Anger: ' + str(y_prob[0][2]) + '\n'  + 'Neutral: ' + str(y_prob[0][3]) + ' ......Happiness: ' + str(y_prob[0][3]) +' ......Sadness: ' + str(y_prob[0][3]) + ' ......Hatred: ' + str(y_prob[0][3]) + ' ......Anger: ' + str(y_prob[0][3]) + '\n' +   + 'Neutral: ' + str(y_prob[0][4]) + ' ......Happiness: ' + str(y_prob[0][4]) +' ......Sadness: ' + str(y_prob[0][4]) + ' ......Hatred: ' + str(y_prob[0][4]) + ' ......Anger: ' + str(y_prob[0][4]) + '\n' +  + 'Neutral: ' + str(y_prob[0][5]) + ' ......Happiness: ' + str(y_prob[0][5]) +' ......Sadness: ' + str(y_prob[0][5]) + ' ......Hatred: ' + str(y_prob[0][5]) + ' ......Anger: ' + str(y_prob[0][5]) + '\n'
-    #K.clear_session()
+        c= 0     
+#K.clear_session()
     
     
     #output = firstName + lastName
