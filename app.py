@@ -35,7 +35,7 @@ def process():
     #best_model =  load_model('BalanceNet1.h5')
     
     text = ["" for _ in range(5)]
-    text = str(firstName)
+    text[0] = str(firstName)
     
     
     sequences_test = tokenizer.texts_to_sequences(text)
