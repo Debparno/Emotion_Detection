@@ -12,7 +12,7 @@ import tensorflow as tf
 from keras import backend as K
 
 app = Flask(__name__)
-best_model =  load_model('BalanceNetT_25.h5')
+best_model =  load_model('BalanceNet_T25.h5')
 graph = tf.get_default_graph()
 
 """
