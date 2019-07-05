@@ -14,7 +14,8 @@
     $.ajax({
              url : '/init'
             });
-     $('form').on('submit', function(event) {
+    $('.form-control').on('keyup', function() {
+    if ($(this).val().length == 5) {
        $.ajax({
           data : {
              firstName : $('#firstName').val(),
@@ -27,6 +28,7 @@
       });
       event.preventDefault();
       });
+ });
 });
   </script>
 
