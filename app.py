@@ -37,11 +37,22 @@ def process():
     text = ["" for _ in range(5)]
     seq = str(firstName)
     lent = len(seq)
-    for i in range(0,lent,10):
-        if(i + 10 > lent):
-            text[0] = seq[i:lent]
-        else:
-            text[0] = seq[i:i+10]
+    c = 0
+    for i in range(0,lent,50):        
+        if(i + 50 > lent):
+            for j in range(i,lent,10):
+                if(j + 10 > lent):
+                    text[c] = seq[j:lent]
+                else:
+                    text[c] = seq[j:j+10]
+         else:
+            for j in range(i,i+50,10):
+                if(j + 10 > lent):
+                    text[c] = seq[j:lent]
+                else:
+                    text[c] = seq[j:j+10]
+         c += 1
+
         sequences_test = tokenizer.texts_to_sequences(text)
         data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
         data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
@@ -49,7 +60,8 @@ def process():
         global graph
         with graph.as_default():
             y_prob = best_model.predict(data_test)
-        result = result + 'Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][0]) + ' ......Hatred: ' + str(y_prob[0][0]) + ' ......Anger: ' + str(y_prob[0][0]) + '\n'
+        
+        result = result + 'Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][0]) + ' ......Hatred: ' + str(y_prob[0][0]) + ' ......Anger: ' + str(y_prob[0][0]) + '\n'  + 'Neutral: ' + str(y_prob[0][1]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][1]) + ' ......Hatred: ' + str(y_prob[0][1]) + ' ......Anger: ' + str(y_prob[0][1]) + '\n'  + 'Neutral: ' + str(y_prob[0][2]) + ' ......Happiness: ' + str(y_prob[0][2]) +' ......Sadness: ' + str(y_prob[0][2]) + ' ......Hatred: ' + str(y_prob[0][2]) + ' ......Anger: ' + str(y_prob[0][2]) + '\n'  + 'Neutral: ' + str(y_prob[0][3]) + ' ......Happiness: ' + str(y_prob[0][3]) +' ......Sadness: ' + str(y_prob[0][3]) + ' ......Hatred: ' + str(y_prob[0][3]) + ' ......Anger: ' + str(y_prob[0][3]) + '\n' +   + 'Neutral: ' + str(y_prob[0][4]) + ' ......Happiness: ' + str(y_prob[0][4]) +' ......Sadness: ' + str(y_prob[0][4]) + ' ......Hatred: ' + str(y_prob[0][4]) + ' ......Anger: ' + str(y_prob[0][4]) + '\n' +  + 'Neutral: ' + str(y_prob[0][5]) + ' ......Happiness: ' + str(y_prob[0][5]) +' ......Sadness: ' + str(y_prob[0][5]) + ' ......Hatred: ' + str(y_prob[0][5]) + ' ......Anger: ' + str(y_prob[0][5]) + '\n'
     #K.clear_session()
     
     
