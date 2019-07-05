@@ -49,7 +49,7 @@ def process():
         global graph
         with graph.as_default():
             y_prob = best_model.predict(data_test)
-        result.append('Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][0]) + ' ......Hatred: ' + str(y_prob[0][0]) + ' ......Anger: ' + str(y_prob[0][0]) + "|||||||||||||||")
+        result = result + 'Neutral: ' + str(y_prob[0][0]) + ' ......Happiness: ' + str(y_prob[0][1]) +' ......Sadness: ' + str(y_prob[0][0]) + ' ......Hatred: ' + str(y_prob[0][0]) + ' ......Anger: ' + str(y_prob[0][0]) + "   |||||||||||||||   "
     #K.clear_session()
     
     
