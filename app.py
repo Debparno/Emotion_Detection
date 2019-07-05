@@ -29,7 +29,7 @@ def init():
 @app.route('/process',methods= ['POST'])
 def process():
     result = ""
-    MAX_SEQUENCE_LENGTH = 30
+    MAX_SEQUENCE_LENGTH = 25
     firstName = request.form['firstName']
     #lastName = request.form['lastName']
     #best_model =  load_model('BalanceNet1.h5')
