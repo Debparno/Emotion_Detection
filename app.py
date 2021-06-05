@@ -44,11 +44,9 @@ def process():
     
     #K.clear_session()
     
-    
-    #output = firstName + lastName
-    if (firstName):
-        return jsonify({'output': result})
-    return jsonify({'error' : 'Missing data!'})
+    response = jsonify({'output': result})
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
     
 @app.route('/')
