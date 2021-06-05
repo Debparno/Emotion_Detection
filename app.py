@@ -40,7 +40,7 @@ def process():
     lis = list(y_prob[0])
     emot = ["Neutral", "Happy", "Sad", "Hate","Anger"]
     maxi = lis.index(max(lis))
-    result = result + 'Neutral=' + str(y_prob[0][0]) + ',Happy=' + str(y_prob[0][1]) +',Sadness=' + str(y_prob[0][2]) + ',Hatred=' + str(y_prob[0][3]) + ',Anger=' + str(y_prob[0][4])
+    result = result + str(y_prob[0][0]) + ',' + str(y_prob[0][1]) +',' + str(y_prob[0][2]) + ',' + str(y_prob[0][3]) + ',' + str(y_prob[0][4])
     
     #K.clear_session()
     
