@@ -1,5 +1,5 @@
 import re
-from flask import Flask, jsonify, render_template, request, response
+from flask import Flask, jsonify, render_template, request, Response
 
 from keras.models import load_model
 # Run this cell to mount your Google Drive.
@@ -44,9 +44,13 @@ def process():
     
     #K.clear_session()
     
-    response = jsonify({'output': result})
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    return response
+    #response = jsonify({'output': result})
+    #response.headers.add("Access-Control-Allow-Origin", "*")
+    #return response
+    r = Response(response= result, status=200, mimetype="application/xml")
+    r.headers["Content-Type"] = "text/xml; charset=utf-8"
+    r.headers["Access-Control-Allow-Origin"] = "*"
+    return r
 
     
 @app.route('/')
