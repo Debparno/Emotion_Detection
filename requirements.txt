@@ -1,8 +1,8 @@
-Flask==0.12.3
+Flask
 Jinja2==2.10.1
 Werkzeug==0.13
 # deploy
-gunicorn==19.5.0
+gunicorn
 gevent
 tensorflow==1.14.0
 keras==2.2.4
