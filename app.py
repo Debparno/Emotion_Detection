@@ -44,9 +44,9 @@ def process():
     
     #K.clear_session()
     
-    #response = jsonify({'output': result})
-    #response.headers.add("Access-Control-Allow-Origin", "*")
-    #return response
+    response = jsonify({'output': result})
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
     
     #r = Response(response= result, status=200, mimetype="application/xml")
     #r.headers["Content-Type"] = "text/xml; charset=utf-8"
