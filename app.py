@@ -13,6 +13,15 @@ import tensorflow as tf
 from keras import backend as K
 
 app = Flask(__name__)
+CORS(app)
+cors = CORS(app, resources = {
+        r"/*": {
+                "origins": "*"
+        }
+})
+
+
+
 best_model =  load_model('BalanceNet_T20.h5')
 graph = tf.get_default_graph()
 with open('tokenizer.pickle', 'rb') as handle:
@@ -43,15 +52,7 @@ def process():
     maxi = lis.index(max(lis))
     result = result + str(y_prob[0][0]) + ',' + str(y_prob[0][1]) +',' + str(y_prob[0][2]) + ',' + str(y_prob[0][3]) + ',' + str(y_prob[0][4])
     
-    #K.clear_session()
     
-    #response = jsonify({'output': result})
-    #response.headers.add("Access-Control-Allow-Origin", "*")
-    #return response
-    
-    #r = Response(response= result, status=200, mimetype="application/xml")
-    #r.headers["Content-Type"] = "text/xml; charset=utf-8"
-    #r.headers["Access-Control-Allow-Origin"] = "*"
     
     return result
 
