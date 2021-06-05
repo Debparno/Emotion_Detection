@@ -1,6 +1,6 @@
 import re
 from flask import Flask, jsonify, render_template, request, Response
-from flask_cors import CORS
+#from flask_cors import CORS
 
 from keras.models import load_model
 # Run this cell to mount your Google Drive.
@@ -13,12 +13,14 @@ import tensorflow as tf
 from keras import backend as K
 
 app = Flask(__name__)
+"""
 CORS(app)
 cors = CORS(app, resources = {
         r"/*": {
                 "origins": "*"
         }
 })
+"""
 
 
 
