@@ -13,16 +13,6 @@ import tensorflow as tf
 from keras import backend as K
 
 app = Flask(__name__)
-"""
-CORS(app)
-cors = CORS(app, resources = {
-        r"/*": {
-                "origins": "*"
-        }
-})
-"""
-
-
 
 best_model =  load_model('BalanceNet_T20.h5')
 graph = tf.get_default_graph()
