@@ -15,18 +15,12 @@ from keras import backend as K
 app = Flask(__name__)
 
 best_model =  load_model('BalanceNet_T20.h5')
-graph = tf.get_default_graph()
-with open('tokenizer.pickle', 'rb') as handle:
-        tokenizer = pickle.load(handle)
-
 
 @app.route('/process',methods= ['POST'])
 def process():
     result = ""
     MAX_SEQUENCE_LENGTH = 30
     firstName = request.form['firstName']
-    #lastName = request.form['lastName']
-    #best_model =  load_model('BalanceNet1.h5')
     
     text = ["" for _ in range(5)]
     text[0] = str(firstName)
@@ -36,9 +30,7 @@ def process():
     data_int_t = pad_sequences(sequences_test, padding='pre', maxlen=(MAX_SEQUENCE_LENGTH-5))
     data_test = pad_sequences(data_int_t, padding='post', maxlen=(MAX_SEQUENCE_LENGTH))
     #with graph.as_default():
-    global graph
-    with graph.as_default():
-        y_prob = best_model.predict(data_test)
+    y_prob = best_model.predict(data_test)
     lis = list(y_prob[0])
     emot = ["Neutral", "Happy", "Sad", "Hate","Anger"]
     maxi = lis.index(max(lis))
